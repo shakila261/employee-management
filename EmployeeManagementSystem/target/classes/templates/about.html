@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - Employee Hub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+      <!-- External CSS -->
+    <link rel="stylesheet" th:href="@{/frontend.css}">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle, #0d0d2b, #000000);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/hero.png') no-repeat center center;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgb(0, 0, 0);
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 0 25px rgb(0, 0, 0);
+    color: rgb(0, 64, 128);
+}
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 6px rgb(0, 0, 0);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            color: rgb(0, 0, 0);
+            text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.2);
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            color: white;
+        }
+
+        h2 {
+            font-weight: 600;
+            color: #ffcc00;
+        }
+
+        p {
+            color: #e0e0e0;
+        }
+
+        .img-full {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+        }
+
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid #ffcc00;
+            box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Welcome to Employee Hub</h1>
+    <p>Your trusted platform for streamlined employee management — built for efficiency, security, and simplicity.</p>
+</div>
+
+
+<!-- Vision Section -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="glass-box mb-4">
+                    <h2>Our Vision</h2>
+                    <p>We envision a future where HR and management are effortless. Our goal is to simplify operations with a centralized platform for employee records, processes, and insights.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="images/vision1.png" alt="Our Vision" class="img-full">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 order-md-2">
+                <div class="glass-box mb-4">
+                    <h2>Our Mission</h2>
+                    <p>Our mission is to deliver a seamless and secure experience for managing employees — from hiring to data reporting. We believe in simplicity, design, and efficiency.</p>
+                </div>
+            </div>
+            <div class="col-md-6 order-md-1">
+                <img src="/images/mission.png" alt="Our Mission" class="img-full">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="section">
+    <div class="container text-center">
+        <h2>Meet the Creator</h2>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4">
+                <div class="glass-box">
+                    <div class="team-member">
+                       
+                        <h5 class="mt-3">Manasi Sangale</h5>
+                        <p>Developer, Designer, Dreamer</p>
+                        <p><i class="fas fa-code"></i> Java | Spring Boot | Thymeleaf | UI/UX</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2025 Employee Hub | Designed with 💡 and 💙 by Manasi Sangale</p>
+</div>
+
+</body>
+</html>

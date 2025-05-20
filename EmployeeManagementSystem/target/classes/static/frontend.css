@@ -1,0 +1,173 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #eee;
+   /* background: #0d0d2b;*/
+}
+
+/* Navbar */
+
+/* Navbar */
+.navbar {
+    background: radial-gradient(circle, #0d0d2b, #000000);
+    padding: 15px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgb(0, 0, 255);
+    transform: translateY(-100px);
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-size: 18px;
+    margin-left: 15px;
+    transition: color 0.6s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcc00 !important;
+    transform: scale(1.1);
+}
+
+
+/* Hero Section */
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 680px; /* Increased height */
+    overflow: hidden;
+}
+
+/* Ensure all images in the carousel have the same size */
+.carousel-item img {
+    width: 100%;
+    height:620px; /* Increased height */
+    object-fit: cover; /* Maintain aspect ratio and fill container */
+}
+
+/* Center the caption in the middle of the image */
+/* Center the caption in the middle of the image */
+.carousel-caption {
+    position: absolute;
+    top: 45%; /* Adjusted to move the box higher */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.8); /* Dark background for better readability */
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%; /* Adjust width as needed */
+    height: auto; /* Change to auto to fit the content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Ensures content is centered */
+    align-items: center; /* Ensures text aligns in the middle */
+}
+
+
+
+
+/* Features Section */
+/* Features Section - Move Up */
+.features {
+    background: radial-gradient(circle, #0d0d2b, #000000);
+    padding: 40px 0;  /* Reduced padding */
+    margin-top: -100px; /* Moves it upwards */
+    position: relative;
+    z-index: 2;
+}
+
+/* Feature Box Styling */
+.features .feature-box {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 40px;
+    border-radius: 10px;
+    margin: 15px;
+    box-shadow: 2px 2px 20px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;  /* Ensure all feature boxes have the same height */
+}
+
+.features .feature-box:hover {
+    transform: translateY(-10px);  /* Move up slightly on hover */
+    box-shadow: 0px 8px 25px rgba(255, 255, 255, 0.2);
+    cursor: pointer;  /* Change cursor to indicate interactiveness */
+}
+
+.features .feature-box i {
+    font-size: 60px;
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+.features h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.features p {
+    color: #ddd;
+}
+
+
+
+/* Call-to-Action Section */
+.cta {
+    background: radial-gradient(circle, #0d0d2b, #000000);
+    color: white;
+    padding: 40px 0;  /* Increase padding for more emphasis */
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.cta h2 {
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.cta .btn {
+    padding: 18px 40px;
+    font-size: 20px;
+    background: #ffcc00;
+    color: #00264d;
+    border-radius: 5px;
+    transition: 0.3s;
+    text-decoration: none;
+    box-shadow: 0px 4px 10px rgba(255, 204, 0, 0.5);
+}
+
+.cta .btn:hover {
+    background: #ff9900;
+    transform: scale(1.05);  /* Slightly scale the button on hover */
+    box-shadow: 0px 6px 15px rgba(255, 204, 0, 0.7);
+}
+
+/* Footer */
+footer {
+    background: rgb(0, 0, 0);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}

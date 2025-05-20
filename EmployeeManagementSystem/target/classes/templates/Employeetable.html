@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" th:href="@{/frontend.css}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            padding-top: 120px;
+            background:radial-gradient(circle, #0d0d2b, #000000) ;
+            
+        }
+
+     
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-decoration-color: black;
+            color: rgb(255, 255, 255); 
+        }
+
+        .table-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            
+        }
+
+        table {
+            width: 100%;
+            table-layout: auto;
+            white-space: nowrap;
+        }
+
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #343a40;
+            color: white;
+            font-size: 16px;
+        }
+
+        td {
+            font-size: 15px;
+            color: white;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            color: rgb(255, 255, 255);
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Button Section Styling */
+        .button-container {
+            display: flex;
+            justify-content: space-between; /* Aligns items at opposite ends */
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        /* Left-side Download Buttons */
+        .download-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Right-side Add Employee Button */
+        .add-employee-btn {
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-control {
+    min-width: 160px;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+
+
+.input-group select {
+    max-width: 60px;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container-fluid">
+        <h2>Employee Data</h2>
+        
+  <form th:action="@{/filterEmployees}" method="get" class="mb-4">
+    <div class="form-row">
+        <div class="col"><input type="text" name="name" class="form-control" placeholder="Search by Name"></div>
+        <div class="col"><input type="text" name="email" class="form-control" placeholder="Search by Email"></div>
+        <div class="col"><input type="text" name="phoneNo" class="form-control" placeholder="Search by Phone Number" style="min-width: 185px;"></div>
+        <div class="col"><input type="text" name="department" class="form-control" placeholder="Search by Department" style="min-width: 170px;"></div>
+        <div class="col"><input type="text" name="position" class="form-control" placeholder="Search by Position"></div>
+
+        <!-- Salary filter with condition -->
+        <div class="col"  style="min-width: 180px;">
+            <div class="input-group">
+                <select name="salaryCondition" class="form-control">
+                    <option value="equal">=</option>
+                    <option value="greater">&gt;</option>
+                    <option value="less">&lt;</option>
+                </select>
+                <input type="text" name="salary" class="form-control" placeholder="Enter Salary">
+            </div>
+        </div>
+
+        <div class="col"><input type="text" name="address" class="form-control" placeholder="Search by Address"></div>
+        <div class="col"><input type="date" name="joiningDate" class="form-control"></div>
+        <div class="col"><button type="submit" class="btn btn-primary">Filter</button></div>
+    </div>
+</form>
+
+
+
+
+
+        <!-- Button Section -->
+        <div class="button-container">
+            <!-- Left: Download Buttons -->
+            <div class="download-buttons">
+                <a href="/employee/download" class="btn btn-success">Download CSV</a>
+                <a href="/employee/download/pdf" class="btn btn-danger">Download PDF</a>
+            </div>
+
+            <!-- Right: Add Employee Button -->
+            <a href="addEmployee" class="btn btn-success btn-lg add-employee-btn">+ Add Employee</a>
+        </div>
+
+        <div class="table-container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Salary</th>
+                        <th>Address</th>
+                        <th>Joining Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="employee : ${employees}">
+                        <td th:text="${employee.id}"></td>
+                        <td th:text="${employee.name}"></td>
+                        <td th:text="${employee.email}"></td>
+                        <td th:text="${employee.phoneNo}"></td>
+                        <td th:text="${employee.department}"></td>
+                        <td th:text="${employee.position}"></td>
+                        <td th:text="${employee.salary}"></td>
+                        <td th:text="${employee.address}"></td>
+                        <td th:text="${employee.joiningDate}"></td>
+                        <td class="action-buttons">
+                            <a th:href="@{/updateEmployee/{id}(id=${employee.id})}" class="btn btn-warning btn-sm">Update</a>
+                            <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a>
+                               <a th:href="@{/employee/idcard/{id}(id=${employee.id})}" class="btn btn-sm btn-primary">View ID Card</a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="text-center text-muted" th:if="${#lists.isEmpty(employees)}">No employees found.</p>
+        </div>
+    </div>
+
+</body>
+</html>
